@@ -1,0 +1,2 @@
+model_checkpoint_path: "C:\\Users\\Administrator\\Git\\CFturb\\Deep_Learning\\ckpt\\myregression.ckpt"
+all_model_checkpoint_paths: "C:\\Users\\Administrator\\Git\\CFturb\\Deep_Learning\\ckpt\\myregression.ckpt"
