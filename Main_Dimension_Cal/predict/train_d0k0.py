@@ -10,12 +10,12 @@ import torch.nn as nn
 from tqdm import tqdm
 import numpy as np
 from matplotlib import pyplot as plt
-
+from sklearn.preprocessing import StandardScaler
+import pandas as pd
 
 # 实例化模型，优化器，和损失函数
 model = PreModel()
-optimizer = optim.Adam(model.parameters(), lr=1e-2)
-
+optimizer = optim.Adam(model.parameters(), lr=1e-3)
 # 保存每一次的损失
 loss_list = []
 
@@ -34,7 +34,7 @@ def train(epoch):
         n = n.float()
         npsh = npsh.float()
 
-        x = torch.cat((q, h, n, d0k0), 0)
+        x = torch.cat((q, h, n, npsh), 0)
         # print(x.type())
         # print(x.shape)
         # print(d0k0)
@@ -44,7 +44,7 @@ def train(epoch):
         output = model(x)
         # 计算均方差损失
         loss = nn.MSELoss()
-        loss1= loss(output, d0k0)
+        loss1 = loss(output, d0k0)
         # 反向传播得到损失
         loss1.backward()
         loss_list.append(loss1.item())
@@ -55,10 +55,11 @@ def train(epoch):
         if idx % 10 == 0:
             print("epoch:{}  idx:{}  loss:{:.4f}  output:{}".format(epoch, idx, loss1.item(), output))
             # bar.set_description("epoch:{}, idx:{}, loss:{:.6f}".format(epoch, idx, loss.item()))
+        torch.save(model, './model_save/my_model.pkl')
 
 
 if __name__ == '__main__':
-    for k in range(40):
+    for k in range(100):
         train(k)
     plt.figure(figsize=(50, 8))
     plt.plot(range(len(loss_list)), loss_list)

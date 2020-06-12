@@ -8,6 +8,7 @@
       <w>npsh</w>
       <w>relu</w>
       <w>sklearn</w>
+      <w>tqdm</w>
       <w>usecols</w>
       <w>xlsx</w>
     </words>

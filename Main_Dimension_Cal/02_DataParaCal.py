@@ -75,17 +75,17 @@ class para_cal(object):
 
 # 现在把计算出来的需要预测的参数添加到数据集中
 if __name__ == '__main__':
-    # para_cal = para_cal()
-    # # print(dataset.info())
-    #
-    # # 添加叶轮进口(当量)直径d0的速度系数k0
-    # dataset.insert(11, 'd0k0', para_cal.d0k0())
-    #
-    # # 添加叶轮出口直径d2的速度系数kd2
-    # dataset.insert(12, 'd2k2d2', para_cal.d2kd2())
-    #
-    # # 添加叶轮出口宽度b2的速度系数kb2
-    # dataset.insert(13, 'b2k2b2', para_cal.b2kb2())
+    para_cal = para_cal()
+    # print(dataset.info())
+
+    # 添加叶轮进口(当量)直径d0的速度系数k0
+    dataset.insert(11, 'd0k0', para_cal.d0k0())
+
+    # 添加叶轮出口直径d2的速度系数kd2
+    dataset.insert(12, 'd2k2d2', para_cal.d2kd2())
+
+    # 添加叶轮出口宽度b2的速度系数kb2
+    dataset.insert(13, 'b2k2b2', para_cal.b2kb2())
 
     print(dataset.info())
 
